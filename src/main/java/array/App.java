@@ -1,4 +1,6 @@
 package array;
+
+import java.util.Scanner;
 import arraysorting.ArrayOfRandomFigures;
 
 public class App {
@@ -10,30 +12,34 @@ public class App {
 
     public static void run() {
 
-        ArrayOfRandomFigures arrayOne = new ArrayOfRandomFigures(10, 'a'); /* a = 97 в таблице ASCII.
-        Просто интересно было проверить, сработает ли такой код */
-        ArrayOfRandomFigures arrayTwo = new ArrayOfRandomFigures(20, 200);
-        ArrayOfRandomFigures arrayThree = new ArrayOfRandomFigures(30, 1000);
+        while(true){
 
-        System.out.println("Elements in arrays before sort:");
+            int arraySize;
+            int randomFiguresRange;
+            int exitOrContinue;
 
-        arrayOne.getArrayForSorting();
-        System.out.print("\n");
-        arrayTwo.getArrayForSorting();
-        System.out.print("\n");
-        arrayThree.getArrayForSorting();
-        System.out.print("\n");
+            Scanner in = new Scanner(System.in);
 
-        arrayOne.sortCurrentArray();
-        arrayTwo.sortCurrentArray();
-        arrayThree.sortCurrentArray();
+            System.out.print ("Enter an array size: ");
+            arraySize = in.nextInt();
+            System.out.print ("\nEnter range of random figures: ");
+            randomFiguresRange = in.nextInt();
+            System.out.print("\nUnsorted array of random figures is:\n");
+            ArrayOfRandomFigures arrayRandom = new ArrayOfRandomFigures(arraySize, randomFiguresRange);
+            arrayRandom.getArrayForSorting();
 
-        System.out.println("\nElements in arrays after sort:");
-        arrayOne.getArrayForSorting();
-        System.out.print("\n");
-        arrayTwo.getArrayForSorting();
-        System.out.print("\n");
-        arrayThree.getArrayForSorting();
-        System.out.print("\n");
+            arrayRandom.sortCurrentArray();
+            System.out.print("\n\nSorted array of random figures is:\n");
+            arrayRandom.getArrayForSorting();
+
+            System.out.println("\n\nSort another array - enter \"1\", Exit - enter \"2\"");
+            exitOrContinue = in.nextInt();
+
+            if(exitOrContinue == 2){
+                break;
+            } else {
+                System.out.print("\n");
+            }
+        }
     }
 }
